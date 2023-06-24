@@ -1,6 +1,6 @@
 import wifi
 import time
-from machine import Pin
+from machine import Pin,I2C
 from umqtt.simple import MQTTClient
 
 led = Pin("LED",Pin.OUT)
@@ -13,14 +13,14 @@ buzzer.on()
 
 
 # Certificate path
-cert_file = 'aws/device_cert.crt.der'
-key_file = 'aws/privateKey.key.der'
+cert_file = 'aws/device_cert.crt.der'  #device certificate
+key_file = 'aws/privateKey.key.der'    #private key file
 
 device_id = 'pico'
-hostname = 'iot_core_endpoint'
+hostname = 'a1heff5ap0ff5t-ats.iot.eu-north-1.amazonaws.com'
 
-pub_topic = f'pub/topic'
-sub_topic = f'sub/topic'
+pub_topic = 'pub/topic'
+sub_topic = 'sub/topic'
 
 
 
@@ -48,7 +48,6 @@ def init_mqtt_client():
         print(f"Publish Topic: {pub_topic}")
     except Exception as e:
         print(f'init_mqtt_client error: {e}')
-
 
 def Open(pin):
         pin.on()
@@ -100,6 +99,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
