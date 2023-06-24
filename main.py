@@ -1,6 +1,6 @@
 import wifi
 import time
-from machine import Pin,I2C
+from machine import Pin
 from umqtt.simple import MQTTClient
 
 led = Pin("LED",Pin.OUT)
